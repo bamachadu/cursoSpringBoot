@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class CategoriaResource {
 
   @RequestMapping(method = RequestMethod.GET)
-  public List<Categoria> listar() {
+  public List<Categoria> list() {
     Categoria categoria1 = new Categoria(1, "Informática");
     Categoria categoria2 = new Categoria(1, "Escritorio");
 
-    List<Categoria> lista = new ArrayList<>();
+    List<Categoria> list = new ArrayList<>();
 
-    lista.add(categoria1);
-    lista.add(categoria2);
+    list.add(categoria1);
+    list.add(categoria2);
 
-    return lista;
+    return list;
   }
 }
