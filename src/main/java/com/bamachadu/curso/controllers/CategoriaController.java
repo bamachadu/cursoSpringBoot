@@ -1,8 +1,5 @@
 package com.bamachadu.curso.controllers;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.bamachadu.curso.domain.Categoria;
 import com.bamachadu.curso.service.CategoriaService;
 
