@@ -15,7 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.bamachadu.curso.entity.models.TipoCliente;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Cliente implements Serializable {
@@ -38,7 +38,7 @@ public class Cliente implements Serializable {
   @CollectionTable(name = "telefone")
   private Set<String> teleones = new HashSet<>();
 
-  @JsonBackReference
+  @JsonIgnore
   @OneToMany(mappedBy = "cliente")
   private List<Pedido> pedidos = new ArrayList<>();
 
