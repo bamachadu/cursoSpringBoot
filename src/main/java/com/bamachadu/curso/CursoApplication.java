@@ -4,10 +4,15 @@ import java.util.Arrays;
 
 import com.bamachadu.curso.entity.domain.Categoria;
 import com.bamachadu.curso.entity.domain.Cidade;
+import com.bamachadu.curso.entity.domain.Cliente;
+import com.bamachadu.curso.entity.domain.Endereco;
 import com.bamachadu.curso.entity.domain.Estado;
 import com.bamachadu.curso.entity.domain.Produto;
+import com.bamachadu.curso.entity.models.TipoCliente;
 import com.bamachadu.curso.repositories.CategoriaRepository;
 import com.bamachadu.curso.repositories.CidadeRepository;
+import com.bamachadu.curso.repositories.ClienteRepository;
+import com.bamachadu.curso.repositories.EnderecoRepository;
 import com.bamachadu.curso.repositories.EstadoRepository;
 import com.bamachadu.curso.repositories.ProdutoRepository;
 
@@ -27,6 +32,10 @@ public class CursoApplication implements CommandLineRunner {
 	private EstadoRepository estadoRepository;
 	@Autowired
 	private CidadeRepository cidadeRepository;
+	@Autowired
+	private ClienteRepository clienteRepository;
+	@Autowired
+	private EnderecoRepository enderecoRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CursoApplication.class, args);
@@ -64,6 +73,17 @@ public class CursoApplication implements CommandLineRunner {
 
 		estadoRepository.saveAll(Arrays.asList(est1, est2));
 		cidadeRepository.saveAll(Arrays.asList(c1, c2, c3));
+
+		Cliente cli1 = new Cliente(null, "Maria Silva", "maria@gmail.com", "12223233345", TipoCliente.PESSOA_FISICA);
+
+		Endereco e1 = new Endereco(null, "rua  rua 1", "1", "apto", "centro", "31313131", cli1, c1);
+		Endereco e2 = new Endereco(null, "rua  rua 2", "1", "apto", "centro", "31313131", cli1, c2);
+
+		cli1.getTeleones().addAll(Arrays.asList("12345612", "12345555552"));
+		cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
+
+		clienteRepository.saveAll(Arrays.asList(cli1));
+		enderecoRepository.saveAll(Arrays.asList(e1, e2));
 
 	}
 }
