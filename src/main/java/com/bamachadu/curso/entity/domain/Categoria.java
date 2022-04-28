@@ -1,4 +1,4 @@
-package com.bamachadu.curso.domain;
+package com.bamachadu.curso.entity.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

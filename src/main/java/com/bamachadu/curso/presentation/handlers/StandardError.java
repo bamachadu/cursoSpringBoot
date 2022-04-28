@@ -1,4 +1,4 @@
-package com.bamachadu.curso.controllers.handlers;
+package com.bamachadu.curso.presentation.handlers;
 
 import java.io.Serializable;
 

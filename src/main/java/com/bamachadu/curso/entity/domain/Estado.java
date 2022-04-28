@@ -1,4 +1,4 @@
-package com.bamachadu.curso.domain;
+package com.bamachadu.curso.entity.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;

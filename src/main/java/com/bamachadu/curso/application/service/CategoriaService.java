@@ -1,10 +1,10 @@
-package com.bamachadu.curso.service;
+package com.bamachadu.curso.application.service;
 
 import java.util.Optional;
 
-import com.bamachadu.curso.domain.Categoria;
+import com.bamachadu.curso.application.helpers.ObjectNotFoundException;
+import com.bamachadu.curso.entity.domain.Categoria;
 import com.bamachadu.curso.repositories.CategoriaRepository;
-import com.bamachadu.curso.service.helpers.ObjectNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

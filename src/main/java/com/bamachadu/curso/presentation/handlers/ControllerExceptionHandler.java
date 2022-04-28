@@ -1,8 +1,8 @@
-package com.bamachadu.curso.controllers.handlers;
+package com.bamachadu.curso.presentation.handlers;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.bamachadu.curso.service.helpers.ObjectNotFoundException;
+import com.bamachadu.curso.application.helpers.ObjectNotFoundException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

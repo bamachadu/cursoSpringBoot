@@ -1,7 +1,7 @@
-package com.bamachadu.curso.controllers;
+package com.bamachadu.curso.presentation.controllers;
 
-import com.bamachadu.curso.domain.Categoria;
-import com.bamachadu.curso.service.CategoriaService;
+import com.bamachadu.curso.application.service.CategoriaService;
+import com.bamachadu.curso.entity.domain.Categoria;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

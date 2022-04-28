@@ -1,6 +1,6 @@
 package com.bamachadu.curso.repositories;
 
-import com.bamachadu.curso.domain.Cidade;
+import com.bamachadu.curso.entity.domain.Cidade;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

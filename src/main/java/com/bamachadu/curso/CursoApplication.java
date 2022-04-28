@@ -2,10 +2,10 @@ package com.bamachadu.curso;
 
 import java.util.Arrays;
 
-import com.bamachadu.curso.domain.Categoria;
-import com.bamachadu.curso.domain.Cidade;
-import com.bamachadu.curso.domain.Estado;
-import com.bamachadu.curso.domain.Produto;
+import com.bamachadu.curso.entity.domain.Categoria;
+import com.bamachadu.curso.entity.domain.Cidade;
+import com.bamachadu.curso.entity.domain.Estado;
+import com.bamachadu.curso.entity.domain.Produto;
 import com.bamachadu.curso.repositories.CategoriaRepository;
 import com.bamachadu.curso.repositories.CidadeRepository;
 import com.bamachadu.curso.repositories.EstadoRepository;

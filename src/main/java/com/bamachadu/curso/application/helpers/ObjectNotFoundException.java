@@ -1,4 +1,4 @@
-package com.bamachadu.curso.service.helpers;
+package com.bamachadu.curso.application.helpers;
 
 public class ObjectNotFoundException extends RuntimeException {
   private static final long serialVersionUID = 1L;
