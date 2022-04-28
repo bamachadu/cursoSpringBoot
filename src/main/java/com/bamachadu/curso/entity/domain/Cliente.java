@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.bamachadu.curso.entity.models.TipoCliente;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Cliente implements Serializable {
@@ -30,6 +31,7 @@ public class Cliente implements Serializable {
   // int e o mundo externo ve o enumerado TipoCliente
   private Integer tipoCliente;
 
+  @JsonManagedReference
   @OneToMany(mappedBy = "cliente")
   private List<Endereco> enderecos = new ArrayList<>();
 
