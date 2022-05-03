@@ -1,7 +1,10 @@
 package com.bamachadu.curso.presentation.controllers;
 
 import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
 
+import com.bamachadu.curso.application.casoDeUso.CategoriaFindAll;
 import com.bamachadu.curso.application.service.CategoriaService;
 import com.bamachadu.curso.entity.domain.Categoria;
 
@@ -20,6 +23,13 @@ public class CategoriaController {
 
   @Autowired
   private CategoriaService service;
+
+  @RequestMapping(method = RequestMethod.GET)
+  public ResponseEntity<List<CategoriaFindAll>> findAll() {
+    List<Categoria> list = service.findAll();
+    List<CategoriaFindAll> listAll = list.stream().map(obj -> new CategoriaFindAll(obj)).collect(Collectors.toList());
+    return ResponseEntity.ok().body(listAll);
+  }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.GET)
   public ResponseEntity<Categoria> find(@PathVariable Integer id) {

@@ -1,5 +1,6 @@
 package com.bamachadu.curso.application.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.bamachadu.curso.application.helpers.ObjectNotFoundException;
@@ -16,6 +17,11 @@ public class CategoriaService {
 
   @Autowired
   private CategoriaRepository repository;
+
+  public List<Categoria> findAll() {
+    List<Categoria> list = repository.findAll();
+    return list;
+  }
 
   public Categoria findById(Integer id) {
     Optional<Categoria> obj = repository.findById(id);
