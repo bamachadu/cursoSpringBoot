@@ -4,7 +4,9 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.bamachadu.curso.application.casoDeUso.CategoriaFindAll;
+import javax.validation.Valid;
+
+import com.bamachadu.curso.application.dto.CategoriaDto;
 import com.bamachadu.curso.application.service.CategoriaService;
 import com.bamachadu.curso.entity.domain.Categoria;
 
@@ -27,9 +29,9 @@ public class CategoriaController {
   private CategoriaService service;
 
   @RequestMapping(method = RequestMethod.GET)
-  public ResponseEntity<List<CategoriaFindAll>> findAll() {
+  public ResponseEntity<List<CategoriaDto>> findAll() {
     List<Categoria> list = service.findAll();
-    List<CategoriaFindAll> listAll = list.stream().map(obj -> new CategoriaFindAll(obj)).collect(Collectors.toList());
+    List<CategoriaDto> listAll = list.stream().map(obj -> new CategoriaDto(obj)).collect(Collectors.toList());
     return ResponseEntity.ok().body(listAll);
   }
 
@@ -40,7 +42,8 @@ public class CategoriaController {
   }
 
   @RequestMapping(method = RequestMethod.POST)
-  public ResponseEntity<Void> add(@RequestBody Categoria obj) {
+  public ResponseEntity<Void> add(@Valid @RequestBody CategoriaDto objDto) {
+    Categoria obj = service.fromDto(objDto);
     obj = service.add(obj);
     URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 
@@ -48,7 +51,8 @@ public class CategoriaController {
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-  public ResponseEntity<Void> update(@RequestBody Categoria obj, @PathVariable Integer id) {
+  public ResponseEntity<Void> update(@Valid @RequestBody CategoriaDto objDto, @PathVariable Integer id) {
+    Categoria obj = service.fromDto(objDto);
     obj.setId(id);
     obj = service.update(obj);
 
@@ -62,14 +66,13 @@ public class CategoriaController {
   }
 
   @RequestMapping(value = "/page", method = RequestMethod.GET)
-  public ResponseEntity<Page<CategoriaFindAll>> findPage(
+  public ResponseEntity<Page<CategoriaDto>> findPage(
       @RequestParam(value = "page", defaultValue = "0") Integer page,
       @RequestParam(value = "linesPerPage", defaultValue = "24") Integer linesPerPage,
       @RequestParam(value = "orderBy", defaultValue = "nome") String orderBy,
       @RequestParam(value = "direction", defaultValue = "ASC") String direction) {
     Page<Categoria> list = service.findPage(page, linesPerPage, orderBy, direction);
-    Page<CategoriaFindAll> listAll = list.map(obj -> new CategoriaFindAll(obj));
+    Page<CategoriaDto> listAll = list.map(obj -> new CategoriaDto(obj));
     return ResponseEntity.ok().body(listAll);
   }
-
 }

@@ -1,19 +1,26 @@
-package com.bamachadu.curso.application.casoDeUso;
+package com.bamachadu.curso.application.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotEmpty;
+
 import com.bamachadu.curso.entity.domain.Categoria;
 
-public class CategoriaFindAll implements Serializable {
+import org.hibernate.validator.constraints.Length;
+
+public class CategoriaDto implements Serializable {
   private static final long serialVersionUID = 1L;
 
   private Integer id;
+
+  @NotEmpty(message = "Preenchimento obrigatório")
+  @Length(min=5, max = 80, message = "Tamanho entre 5 e 80")
   private String nome;
 
-  public CategoriaFindAll() {
+  public CategoriaDto() {
   }
 
-  public CategoriaFindAll(Categoria categoria) {
+  public CategoriaDto(Categoria categoria) {
     id = categoria.getId();
     nome = categoria.getNome();
   }

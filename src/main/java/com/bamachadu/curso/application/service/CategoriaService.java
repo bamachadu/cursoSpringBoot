@@ -6,6 +6,7 @@ import java.util.Optional;
 import com.bamachadu.curso.application.helpers.ObjectNotFoundException;
 import com.bamachadu.curso.entity.domain.Categoria;
 import com.bamachadu.curso.repositories.CategoriaRepository;
+import com.bamachadu.curso.application.dto.CategoriaDto;
 import com.bamachadu.curso.application.helpers.DataIntegrityException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,9 @@ public class CategoriaService {
   public Page<Categoria> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
     PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
     return repository.findAll(pageRequest);
+  }
 
+  public Categoria fromDto(CategoriaDto objDto) {
+    return new Categoria(objDto.getId(), objDto.getNome());
   }
 }
