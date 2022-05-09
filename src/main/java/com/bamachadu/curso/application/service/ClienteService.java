@@ -12,7 +12,6 @@ import com.bamachadu.curso.entity.domain.Cliente;
 import com.bamachadu.curso.entity.domain.Endereco;
 import com.bamachadu.curso.entity.models.TipoCliente;
 import com.bamachadu.curso.repositories.ClienteRepository;
-import com.bamachadu.curso.repositories.EnderecoRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -20,14 +19,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ClienteService {
 
   @Autowired
   private ClienteRepository repository;
-  @Autowired
+  // @Autowired
   // private EnderecoRepository enderecoRepository;
 
   public Cliente findById(Integer id) {
@@ -42,12 +40,9 @@ public class ClienteService {
     return list;
   }
 
-  @Transactional
   public Cliente add(Cliente obj) {
     obj.setId(null);
-    obj = repository.save(obj);
-    // enderecoRepository.saveAll(obj.getEnderecos());
-    return obj;
+    return repository.save(obj);
   }
 
   public Cliente update(Cliente obj) {
